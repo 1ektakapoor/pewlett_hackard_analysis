@@ -13,7 +13,28 @@ Looking at the table below of the number of retirees by title, the two largest c
 ###  Employees Eligible for the Mentorship Program
 This analysis was done to create a mentorship-eligibility table that holds current employeee information who were born between January 1, 1965 and December 31, 1965, that can participate in a company wide mentorship program.
 
+The number of employees that are eligible for the mentorship progam are 1,459. The analysis created for mentorship eligibility holds information about the employee such as name, birth date, date range of employment and title. The table shows an example of this analysis.
+
+![mentorship_eligibility.png](images/mentorship_eligibility.png)
+
+Although this analysis is helpful, a deeper breakdown into the mentorship eligibility would be helpful to Pewlett Hackard. A breakdown of how many employees per title would be great insight to see which leadership positions can transfer there knowledge. Using the following, a table was created with this information:
+
+````
+SELECT count(emp_no), title
+INTO mentorship_titles
+FROM mentorship_eligibilty
+GROUP BY title
+ORDER BY count(emp_no) DESC;
+````
+From this table, it can be shown that similar to the retirement titles many of the employees who are eligible for mentorship fall in the same category - senior staff. However, the second most eligible title is an engineer when compared to the retirement data is third on that list. 
+
+![mentorship_titles.png](images/mentorship_titles.png)
 
 # Summary
-1. How many roles will need to be filled as the "silver tsunami" begins to make an impact?
-2. Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
+### How many roles will need to be filled as the "silver tsunami" begins to make an impact?
+As the "silver tsunami" begins, a total of 90,396 potential roles will need to be filled.  
+
+### Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
+When looking at the number of potential retirees to mentorship eligibity the ratio is 90396/1456, or  1:62. This ratio means that every retiring employee there would 62 mentees, given the understanding that those retiring will provide a knowledge transfer to these mentees. Such a large ratio is not ideal for the future of the company, since the mentees maybe not be able to receive proper instructions when lost in a bigger grouo.
+
+### Future Research
