@@ -38,3 +38,19 @@ As the "silver tsunami" begins, a total of 90,396 potential roles will need to b
 When looking at the number of potential retirees to mentorship eligibity the ratio is 90396/1456, or  1:62. This ratio means that every retiring employee there would 62 mentees, given the understanding that those retiring will provide a knowledge transfer to these mentees. Such a large ratio is not ideal for the future of the company, since the mentees maybe not be able to receive proper instructions when lost in a bigger grouo.
 
 ### Future Research
+
+An additional query that can provide more insight is updating our mentorship eligibility table to account for current employees whose birthday is between 1962 and 1965. The updated query would look as follows:
+
+````
+SELECT DISTINCT ON (a.emp_no) [column names, not placed here for space]
+FROM employees a
+INNER JOIN dept_emp b on a.emp_no = b.emp_no
+INNER JOIN title c on a.emp_no = c.emp_no
+WHERE (a.birth_date BETWEEN '1962-01-01' AND '1965-12-31') AND (b.to_date = '9999-01-01')
+ORDER BY a.emp_no ASC;
+````
+This query can provide us with a greater range of employees, which increase the ratio of retiring employees to mentors since the number of eligible employees mentorship increased (see table below). This updated query will also provide an opportunity of mentorship to managers which was not an option before hand.
+
+![mentorship_titles_updated.png](images/mentorship_titles_updated.png)
+
+Another way we can look into analysis is by department. We can break down the number of retiring employees and employees eligible for mentorship by department. This can be beneficial to Pewlett Hackard, because they can budget by department accordingly and continue future research by department. The next steps would be to see how many positions per department would need to be filled and how many of those seats can be mentored as well, and even more in the future we could look at the salary ranges for those employees to see how much new positions would be offered.
